@@ -6,7 +6,7 @@ namespace WordFinder
     public class WordFinder : IWordFinder
     {
         private readonly IEnumerable<string> matrix;
-        private readonly IEnumerable<string> transposeMatrix = Enumerable.Empty<string>();
+        private IEnumerable<string> transposeMatrix = Enumerable.Empty<string>();
 
         public WordFinder(IEnumerable<string> matrix) 
         { 
@@ -83,7 +83,7 @@ namespace WordFinder
 
             for (var i = 0; i < rowLength; i++)
             {
-                transposeMatrix.Append(string.Join("", matrix.Select(row => row[i])));
+                transposeMatrix = transposeMatrix.Append(string.Join("", matrix.Select(row => row[i])));
             }
         }
 
